@@ -1,0 +1,15 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/images/images",
+    "pages/words/words",
+    "pages/weather/weather"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "FunPlay",
+    "navigationBarTextStyle": "black"
+  }
+}
