@@ -33,7 +33,7 @@ App({
       }
     });
     this.getImagesAccessToken();
-    this.getWordsAccessToken();
+    // this.getWordsAccessToken();
   },
   globalData: {
     userInfo: null,
@@ -50,8 +50,8 @@ App({
       },
       data: {
         'grant_type': 'client_credentials',
-        'client_id': 'x7lGZGr7NxRUfC6WoYGHFqBe',
-        'client_secret': 'Kez6yi9Ql1zcLDnNI6ujTMrml6FIltpk'
+        'client_id': 'koPlDDQkK7sUpGZ9yE1bgMq9',
+        'client_secret': 'AGMCLgmUqLTaEUTTjAHIFXwNpYWxWHLm'
       },
       dataType: 'json',
       success: (response) => {

@@ -1,12 +1,44 @@
-<view class="map-container">
-  <map 
+<view class="container">
+  <view class='map-container' wx:if="{{!weatherShow}}">
+    <map 
     class='map' 
-    scale="12" 
-    latitude="{{latitude}}"
-    longitude="{{longitude}}"
-    markers="{{markers}}"
+    scale="{{scale}}" 
     show-location
-    bindtap='mapClick'
+    latitude='{{latitude}}'
+    longitude='{{longitude}}'
+    markers='{{markers}}'
     bindregionchange="regionChange"
-    id="myMap"></map> 
+    id="myMap"
+    >
+    </map> 
+  </view>
+  <view class='search-container'>
+    <input class='search-place' value='{{city}}' bindblur='inputBlur' bindchange='inputChange'/>
+    <button bindtap='queryWeather' class='query-btn'>查询天气</button>
+  </view>
+  <view class='weather-result' wx:if="{{weatherInfo && weatherShow}}">
+    <icon class='iconfont icon-guanbi weather-icon' bindtap='closeResult'></icon>
+    <view><text class='weather-city'>{{city}}</text></view>
+    <view><text class='weather-temp'>{{weatherInfo.wendu}}</text></view>
+    <view class='forecast-wrap'>
+      <block wx:for="{{weatherInfo.forecast}}">
+        <view class='date-result'>
+          <text class='item-date'>{{item.date}}</text>
+          <icon class='{{item.icon}}'></icon>
+          <text class='item-weather-type'>{{item.type}}</text>
+          <text class='item-high'>{{item.high}}</text>
+          <text class='item-low'>{{item.low}}</text>
+        </view>
+      </block>
+      </view>
+      <view class='result-prop result-hint'><text>今天：{{weatherInfo.forecast[0].notice}}</text></view>
+      <view class='result-prop'><text>日出：{{weatherInfo.forecast[0].sunrise}}</text></view>
+      <view class='result-prop'><text>日落：{{weatherInfo.forecast[0].sunset}}</text></view>
+      <view class='result-prop'><text>湿度：{{weatherInfo.shidu}}</text></view>
+      <view class='result-prop'><text>pm2.5：{{weatherInfo.pm25}}</text></view>
+      <view class='result-prop'><text>pm10：{{weatherInfo.pm10}}</text></view>
+      <view class='result-prop'><text>空气质量：{{weatherInfo.quality}}</text></view>
+      <view class='result-prop'><text>风向：{{weatherInfo.forecast[0].fx}}</text></view>
+      <view class='result-prop'><text>风力：{{weatherInfo.forecast[0].fl}}</text></view>
+  </view>
 </view>

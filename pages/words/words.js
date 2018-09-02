@@ -65,7 +65,7 @@ Page({
   },
   // 图像识别
   detectImg(base64Url) {
-    const access_token = app.globalData.word_access_token;
+    const access_token = app.globalData.access_token;
     const baseUrl = 'https://aip.baidubce.com/rest/2.0/ocr/v1/' + this.data.type;
     const url = baseUrl + '?access_token=' + access_token;
     let params = {

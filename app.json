@@ -1,10 +1,13 @@
 {
   "pages": [
+    "pages/communication/communication",
     "pages/index/index",
     "pages/logs/logs",
     "pages/images/images",
     "pages/words/words",
-    "pages/weather/weather"
+    "pages/weather/weather",
+    "pages/calendar/calendar",
+    "pages/domain/domain"    
   ],
   "window": {
     "backgroundTextStyle": "light",

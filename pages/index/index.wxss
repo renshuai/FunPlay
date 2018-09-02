@@ -13,7 +13,6 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  margin-top: 10rpx;
 }
 .function-item {
   width: 33.33%;

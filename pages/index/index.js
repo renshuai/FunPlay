@@ -128,9 +128,27 @@ Page({
         items: [
           {
             name: '天气查询',
-            icon: 'icon-display',
+            icon: 'icon-baitian-shachenbao',
             type: 'weather',
             canUse: true
+          },
+          {
+            name: '万年历',
+            icon: 'icon-rili',
+            type: 'calendar',
+            canUse: true
+          },
+          {
+            name: '域名查询',
+            icon: 'icon-yuming',
+            type: 'domain',
+            canUse: true
+          },
+          {
+            name: '中英交流',
+            icon: 'icon-fanyi',
+            type: 'communication',
+            canUse: false
           }
         ]
 
