@@ -1,6 +1,6 @@
 //index.js
 //获取应用实例
-const app = getApp()
+const app = getApp();
 Page({
   data: {
     latitude: 39.9110666857,
@@ -15,7 +15,8 @@ Page({
     }],
     scale: 12,
     weatherShow: false,
-    weatherInfo: null
+    weatherInfo: null,
+    timeout: null
 
   },
   onLoad: function (options) {
@@ -61,25 +62,48 @@ Page({
     })
   },
   translateMarker: function (res) {
-    this.mapCtx.translateMarker({
-      markerId: 1,
-      autoRotate: false,
-      duration: 1,
-      destination: {
+    // this.mapCtx.translateMarker({
+    //   markerId: 1,
+    //   autoRotate: false,
+    //   duration: 1,
+    //   destination: {
+    //     latitude: res.latitude,
+    //     longitude: res.longitude,
+    //   },
+    //   animationEnd() {
+    //     console.log('animation end')
+    //   }
+    // })
+    // this.setData({
+    //   'markers[0].latitude': res.latitude,
+    //   'markers[0].longitude': res.longitude
+    // })
+    this.setData({
+      markers: [{
+        id: 1,
         latitude: res.latitude,
         longitude: res.longitude,
-      },
-      animationEnd() {
-        console.log('animation end')
-      }
-    })
-    this.setData({
-      'markers[0].latitude': res.latitude,
-      'markers[0].longitude': res.longitude
+        name: ''
+      }]
     })
   },
-  regionChange(event) {
-    this.getCenterLocation();
+  regionChange(event, causeBy) {
+    console.log(event);
+    // if (this.data.timeout) {
+    //   clearTimeout(this.data.timeout);
+    //   this.setData({
+    //     timeout: null
+    //   })
+    // } else {
+    //   this.setData({
+    //     timeout: setTimeout(_ => {
+    //       this.getCenterLocation();
+    //     }, 100)
+    //   })
+    // }
+    if (event.type === 'end') {
+      this.getCenterLocation();
+    }
   },
   getDetailPosition(obj) {
     return new Promise((resolve, reject) => {
@@ -98,6 +122,7 @@ Page({
     })
   },
   getWeatherInfo() {
+    console.log('gewesdjksdjfkl');
     wx.request({
       url: 'https://www.sojson.com/open/api/weather/json.shtml?city=' + this.data.city,
       success: res => {
@@ -139,6 +164,9 @@ Page({
             weatherShow: true
           })
         }
+      },
+      fail: error => {
+        console.log(error);
       }
     })
   },
@@ -153,20 +181,28 @@ Page({
       hasPositionChange: true
     })
   },
+  inputBlur(event) {
+    this.setData({
+      city: event.detail.value,
+      hasPositionChange: true
+    })
+  },
   queryWeather() {
     // 查询地图中所属区域是否与输入位置相符，不相符，需要地图移动到特定位置
     const position = {
       latitude: this.data.markers[0].latitude,
       longitude: this.data.markers[0].longitude
     }
-    this.mapCtx.getScale({
-      success: res => {
-        this.setData({
-          scale: res.scale
-        })
-      }
-    })
+    // this.mapCtx.getScale({
+    //   success: res => {
+    //     this.setData({
+    //       scale: res.scale
+    //     })
+    //   }
+    // })
     // 先判断是否手动修改了地址，修改了则需要移动地图，否则直接查询天气就行
+    
+    console.log(this.data.hasPositionChange);
     if (!this.data.hasPositionChange) {
       // 记下当前中心点位置，查询完天气后地图显示时直接显示该位置
       this.setData({

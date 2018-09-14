@@ -139,6 +139,12 @@ Page({
             canUse: true
           },
           {
+            name: '每日笑话',
+            icon: 'icon-tubiaozhizuomoban',
+            type: 'jokes',
+            canUse: true
+          },
+          {
             name: '域名查询',
             icon: 'icon-yuming',
             type: 'domain',
