@@ -8,12 +8,19 @@
     "pages/calendar/calendar",
     "pages/domain/domain",
     "pages/communication/communication",  
-    "pages/jokes/jokes"    
+    "pages/jokes/jokes",
+    "pages/face_compare/face_compare"    
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "FunPlay",
     "navigationBarTextStyle": "black"
+  },
+  "plugins": {
+    "WechatSI": {
+      "version": "0.1.0",
+      "provider": "wx069ba97219f66d99"
+    }
   }
 }

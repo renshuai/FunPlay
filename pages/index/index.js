@@ -21,9 +21,15 @@ Page({
             canUse: true
           },
           {
-            name: 'Logo识别',
-            icon: 'icon-logo',
-            type: 'logo',
+            name: '人脸对比',
+            icon: 'icon-compare',
+            type: 'face_compare',
+            canUse: true
+          },
+          {
+            name: '植物识别',
+            icon: 'icon-zhiwu',
+            type: 'plant',
             canUse: true
           },
           {
@@ -45,9 +51,9 @@ Page({
             canUse: true
           },
           {
-            name: '植物识别',
-            icon: 'icon-zhiwu',
-            type: 'plant',
+            name: 'Logo识别',
+            icon: 'icon-logo',
+            type: 'logo',
             canUse: true
           }
           // {
@@ -140,7 +146,7 @@ Page({
           },
           {
             name: '每日笑话',
-            icon: 'icon-tubiaozhizuomoban',
+            icon: 'icon-kaixin-',
             type: 'jokes',
             canUse: true
           },
@@ -154,7 +160,7 @@ Page({
             name: '中英交流',
             icon: 'icon-fanyi',
             type: 'communication',
-            canUse: false
+            canUse: true
           }
         ]
 
@@ -216,7 +222,7 @@ Page({
         });
         return;
       }
-      if (top !== 'images' && top !== 'words') {
+      if ((top !== 'images' && top !== 'words') || type === 'face_compare') {
         wx.navigateTo({
           url: '../' + type + '/' + type
         })
